@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:list_view/showCard.dart';
 import 'showList.dart';
+
 main()=>runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -14,7 +16,14 @@ class MyApp extends StatelessWidget {
           leading: Icon(Icons.account_circle),
           title: Text("User Contact"),
           ),
-        body: ShowUserList()
+          body: PageView(
+            children: [
+              ShowUserList(),
+              UserCard()
+            ],
+          )
+        // body: ShowUserList()
+        // body: UserCard()
       ),
     );
   }

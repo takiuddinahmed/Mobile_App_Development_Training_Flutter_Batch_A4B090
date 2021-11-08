@@ -15,7 +15,9 @@ class ShowUserList extends StatelessWidget {
             child: ListTile(
               title: Text(users[index].name),
               subtitle: Text(users[index].contactNumber),
-              leading: Icon(Icons.phone),
+              trailing: Icon(Icons.phone),
+              leading: CircleAvatar(
+                child: Image.asset("assets/${users[index].image}"),),
             ),
         ),
     );
