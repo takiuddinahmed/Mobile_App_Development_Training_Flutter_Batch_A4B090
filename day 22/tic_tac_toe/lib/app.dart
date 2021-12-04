@@ -84,12 +84,23 @@ class _GameAppState extends State<GameApp> {
           setState(() {
           endGame = true;
           winnerText = gameEndWidget("Match Draw!!");
-          
-
         });
         }
       }
     }
+  }
+
+  List<Widget> getRow(){
+    List list = List.filled(3, []);
+    int l=0;
+    for (int i = 0;i<9;i++){\
+      list[l].add(EachBox(text: data[i],index: i,userClick: userClick,));
+      if(i+1 % 3==0){
+        l++;
+      }
+    }
+    List finalList = list.map((w) => TableRow(children: w)).toList();
+    return (finalList as Widget);
   }
 
   @override
@@ -100,29 +111,30 @@ class _GameAppState extends State<GameApp> {
         winnerText,
         Table(
         border: TableBorder.all(),
-        children: [
-          TableRow(
-            children: [
-              EachBox(text: data[0],index: 0, userClick: userClick,),
-              EachBox(text: data[1],index: 1, userClick: userClick,),
-              EachBox(text: data[2],index: 2, userClick: userClick,),
-            ]
-          ),
-          TableRow(
-            children: [
-              EachBox(text: data[3],index: 3, userClick: userClick,),
-              EachBox(text: data[4],index: 4, userClick: userClick,),
-              EachBox(text: data[5],index: 5, userClick: userClick,),
-            ]
-          ),
-          TableRow(
-            children: [
-              EachBox(text: data[6],index: 6, userClick: userClick,),
-              EachBox(text: data[7],index: 7, userClick: userClick,),
-              EachBox(text: data[8],index: 8, userClick: userClick,),
-            ]
-          ),
-        ],
+        children: getRow(),
+        // children: [
+        //   TableRow(
+        //     children: [
+        //       EachBox(text: data[0],index: 0, userClick: userClick,),
+        //       EachBox(text: data[1],index: 1, userClick: userClick,),
+        //       EachBox(text: data[2],index: 2, userClick: userClick,),
+        //     ]
+        //   ),
+        //   TableRow(
+        //     children: [
+        //       EachBox(text: data[3],index: 3, userClick: userClick,),
+        //       EachBox(text: data[4],index: 4, userClick: userClick,),
+        //       EachBox(text: data[5],index: 5, userClick: userClick,),
+        //     ]
+        //   ),
+        //   TableRow(
+        //     children: [
+        //       EachBox(text: data[6],index: 6, userClick: userClick,),
+        //       EachBox(text: data[7],index: 7, userClick: userClick,),
+        //       EachBox(text: data[8],index: 8, userClick: userClick,),
+        //     ]
+        //   ),
+        // ],
       )]
     );
   }
